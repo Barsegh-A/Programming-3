@@ -1,9 +1,3 @@
-
-
-
-
-
-
 class Generator{
     constructor(x, y, ind){
         this.x = x;
