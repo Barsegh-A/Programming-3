@@ -55,7 +55,7 @@ class Generator{
         var newcord = random(this.freespace(0));
         var elsec = random(this.freespace(1));
         if (this.multiply >= 5  && newcord) {
-            this.sga.push(new this.type(newcord[0], newcord[1], this.index, (this.index-1)*5));
+            this.sga.push(new this.type(newcord[0], newcord[1], this.index, (this.index-1)*10, random(rnd)));
             matrix[newcord[1]][newcord[0]] = this.index;
             this.multiply = 0;
         }

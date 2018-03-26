@@ -1,12 +1,13 @@
 class Livcreature {
-    constructor(x, y, index, energy) {
+    constructor(x, y, index, energy, gender) {
         this.x = x;
         this.y = y;
         this.index = index;
         this.multiply = 0;
         this.energy = energy;
         this.ttl = 0;
-        this.src = this.index-1;
+        this.src = this.index - 1;
+        this.gender = gender
 
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -84,22 +85,36 @@ class Livcreature {
     }
 
     mult() {
-        this.ttl = 0;
-        gga[this.index].push(new ggt[this.index](this.x, this.y, 2, this.src * 5));
-        matrix[this.y][this.x] = this.index;
-    }
-
-
-    die() {
-        for (var a in gga[this.index]) {
-            if (gga[this.index][a].x == this.x && gga[this.index][a].y == this.y) {
-                matrix[this.y][this.x] = 0;
-                gga[this.index].splice(a, 1);
-
+        var multArr = this.freespace(this.index);
+        //console.log(multHerb);
+        if (multArr.length > 0) {
+            for (var a = 0; a < multArr.length; a++) {
+                for (var b in gga[this.index]) {
+                    if (multArr[a][0] == gga[this.index][b].x && multArr[a][1] == gga[this.index][b].y && this.gender != gga[this.index][b].gender) {
+                        //setTimeout(herbArr[i].mult(), 1000);
+                        this.ttl = 0;
+                        gga[this.index].push(new ggt[this.index](this.x, this.y, 2, this.src * 10, random(rnd)));
+                        matrix[this.y][this.x] = this.index;
+                        //console.log(ggt[this.index]);
+                        break;
+                    }
+                    break;
+                }
             }
         }
     }
-}
+
+
+        die() {
+            for (var a in gga[this.index]) {
+                if (gga[this.index][a].x == this.x && gga[this.index][a].y == this.y) {
+                    matrix[this.y][this.x] = 0;
+                    gga[this.index].splice(a, 1);
+
+                }
+            }
+        }
+    }
 
 
 

@@ -34,10 +34,10 @@ class Grass{
         return found;
     }
 
-    mult() {
+    mult(mG) {
         this.multiply++;
         var newcord = random(this.freespace(0));
-        if (this.multiply >= 8 && newcord && matrix[this.y][this.x] != 0) {
+        if (this.multiply >= mG && newcord && matrix[this.y][this.x] != 0) {
             grassArr.push(new Grass(newcord[0], newcord[1]));
             matrix[newcord[1]][newcord[0]] = 1;
             this.multiply = 0;
